@@ -31,7 +31,6 @@ class TemplateGenerator:
             template = "I am tourist, give me 3 best transport options when I am travelling at {location}"
         ), "GETTING AROUND")
 
-
         weatherinfo = (PromptTemplate(
             input_variables = ["location"],
             template = "What is the weather like at {location}"
