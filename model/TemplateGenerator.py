@@ -37,9 +37,14 @@ class TemplateGenerator:
             template = "What is the weather like at {location}"
         ), "WEATHER")
 
-
-
         return [locprompt, hiddengems, cuisineinfo, accomsinfo, transportinfo, weatherinfo]
+    
+    def getCheckTemplates(self) -> PromptTemplate:
+        validLoc = PromptTemplate(
+            input_variables = ["location"],
+            template = "place = {location}, If place is fictional or does not exist, return 0. If place is real, return 1."
+        )
+        return validLoc
 
 
     

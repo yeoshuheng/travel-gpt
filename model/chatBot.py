@@ -23,3 +23,8 @@ class chatBot:
         for i in self.templates:
             chains.append((LLMChain(llm = self.llm, prompt = i[0], verbose = True), i[1]))
         return chains
+    
+    def checkInputs(self, input) -> str:
+        return LLMChain(llm = self.llm, 
+                        prompt = TemplateGenerator().getCheckTemplates()).run(location = input)
+        
