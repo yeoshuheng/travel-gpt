@@ -3,7 +3,7 @@ from chatBot import chatBot
 
 CHATBOT = chatBot()
 
-strm.title("Travel chatbot")
+strm.title("TravelGPT, your one-stop travel bot")
 prompt = strm.text_input("Pick a location")
 
 if prompt:

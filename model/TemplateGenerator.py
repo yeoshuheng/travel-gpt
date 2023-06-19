@@ -13,8 +13,8 @@ class TemplateGenerator:
 
         hiddengems = (PromptTemplate(
             input_variables = ["location"],
-            template = "Give me a list of 5 hidden gems in {location} formatted nicely"
-        ), "HIDDEN GEMS")
+            template = "Give me a list of the 5 best tourist attractions in {location} formatted nicely"
+        ), "PLACES TO VISIT")
 
         cuisineinfo = (PromptTemplate(
             input_variables = ["location"],
@@ -23,7 +23,7 @@ class TemplateGenerator:
 
         accomsinfo = (PromptTemplate(
             input_variables = ["location"],
-            template = "I am tourist, give me 3 good accomodations at {location}"
+            template = "I am tourist, give me 3 good accomodations at {location} along with their price per night"
         ), "ACCOMODATIONS")
 
         transportinfo = (PromptTemplate(
