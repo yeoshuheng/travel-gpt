@@ -26,5 +26,5 @@ class chatBot:
     
     def checkInputs(self, input) -> str:
         return LLMChain(llm = self.llm, 
-                        prompt = TemplateGenerator().getCheckTemplates()).run(location = input)
+            prompt = TemplateGenerator().getCheckTemplates()).run(location = input)
         

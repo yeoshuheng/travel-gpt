@@ -13,12 +13,12 @@ class TemplateGenerator:
 
         hiddengems = (PromptTemplate(
             input_variables = ["location"],
-            template = "Give me a list of hidden gems in {location} formatted nicely"
+            template = "Give me a list of 5 hidden gems in {location} formatted nicely"
         ), "HIDDEN GEMS")
 
         cuisineinfo = (PromptTemplate(
             input_variables = ["location"],
-            template = "I am tourist, give me 5 food recomendations that I must try when visiting {location}"
+            template = "I am tourist, give me 3 food recomendations that I must try when visiting {location}"
         ), "CUISINE")
 
         accomsinfo = (PromptTemplate(
@@ -28,7 +28,7 @@ class TemplateGenerator:
 
         transportinfo = (PromptTemplate(
             input_variables = ["location"],
-            template = "I am tourist, give me transport options when I am travelling at {location}"
+            template = "I am tourist, give me 3 best transport options when I am travelling at {location}"
         ), "GETTING AROUND")
 
 
@@ -37,12 +37,17 @@ class TemplateGenerator:
             template = "What is the weather like at {location}"
         ), "WEATHER")
 
-        return [locprompt, hiddengems, cuisineinfo, accomsinfo, transportinfo, weatherinfo]
+        ecotourism = (PromptTemplate(
+            input_variables = ["location"],
+            template = "I am a tourist, provide 2 ways on how to travel sustainably and reduce my carbon footprint during a trip to {location}."
+        ), "TRAVEL SUSTAINABLY")
+
+        return [locprompt, hiddengems, cuisineinfo, accomsinfo, transportinfo, weatherinfo, ecotourism]
     
     def getCheckTemplates(self) -> PromptTemplate:
         validLoc = PromptTemplate(
             input_variables = ["location"],
-            template = "place = {location}, If place is fictional or does not exist, return 0. If place is real, return 1."
+            template = "place = {location}, If place is fictional or cannot be found, return 0. If the place is not fictional and exists, return 1."
         )
         return validLoc
 
