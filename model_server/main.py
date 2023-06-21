@@ -1,25 +1,25 @@
 from flask import Flask, request, jsonify
-from jsonrpcserver import dispatch, result
-from ChatBot import chatBot
-from Handlers import *
+from chat.chatbot import chatBot
+from database.db import DB
+from database.cache import *
+from database.handlers import *
 
 app = Flask(__name__)
+db = DB()
+CHATBOT = chatBot()
 
 @app.route('/post_json', methods=['POST'])
 def process_json():
     data = request.get_json()
     CHATBOT = chatBot()
-    if data["call_type"] == "1":
-        loc = data["location"]
-        resp = handleDetails(loc, CHATBOT)
-        print(resp)
-    elif data["call_type"] == "0":
-        loc, month, day = data["location"], data["month"], data["day"]
-        resp = handleIternary((loc, day, month), CHATBOT)
-        print(resp)
-    else:
-        return {}
-    return resp
+    loc = data["location"]
+    hit, det_resp = checkCache(loc ,db)
+    if not hit:
+        det_resp = handleDetails(loc, CHATBOT)
+        db.write(loc, det_resp)
+    loc, month, day = data["location"], data["month"], data["day"]
+    iter_resp = handleIternary((loc, day, month), CHATBOT)
+    resp = mergeResponse(iter_resp, det_resp)
     return jsonify(resp)
 
 if __name__ == "__main__":

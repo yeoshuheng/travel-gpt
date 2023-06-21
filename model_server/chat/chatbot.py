@@ -1,9 +1,9 @@
 import os
-from apikey import apikey
+from chat.apikey import apikey
 from langchain.llms import openai
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SimpleSequentialChain
-from TemplateGenerator import TemplateGenerator
+from chat.templategen import TemplateGenerator
 
 os.environ["OPENAI_API_KEY"] = apikey
 
