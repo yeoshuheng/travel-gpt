@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
-from chatbot import chatBot
-from handlers import *
-from cache import *
-from db import DB
+from chat.chatbot import chatBot
+from database.db import DB
+from database.cache import *
+from database.handlers import *
 
 app = Flask(__name__)
 db = DB()
