@@ -1,8 +1,7 @@
 from flask import Flask, request, jsonify
-from jsonrpcserver import dispatch, result
-from ChatBot import chatBot
-from Handlers import *
-from Cache import *
+from chatbot import chatBot
+from handlers import *
+from cache import *
 from db import DB
 
 app = Flask(__name__)

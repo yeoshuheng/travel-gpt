@@ -1,4 +1,4 @@
-from ChatBot import chatBot
+from chatbot import chatBot
 
 def handleDetails(inpt : str, bot : chatBot) -> dict:
     resp = {}
