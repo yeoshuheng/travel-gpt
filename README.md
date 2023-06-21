@@ -9,6 +9,20 @@ With that, we have decided to leverage on the growing trend of free to use LLMs 
 
 ### Tools
  - Python: Flask, OpenAI, LangChain
- - JavaScript: NodeJS
- - Golang: GRPC
+ - HTML, CSS
+ - JavaScript, NodeJs
  - RedisDB
+ - Docker
+
+### Endpoints
+Endpoint for the model server.
+
+**5000/port_json**
+```json
+{
+    "location" : "tokyo",
+    "month" : "june",
+    "day" : "5"
+}
+
+```
