@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Singapore Airlines - TravelGPT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finlandica:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a class="logopic" href="https://www.singaporeair.com/en_UK/sg/home#/book/bookflight"><img src="../images/newlogo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <a href="https://www.singaporeair.com/en_UK/sg/plan-travel/">PLAN TRAVEL | </a>
+                    <a href="https://www.singaporeair.com/en_UK/sg/flying-withus/">FLYING WITH US | </a>
+                    <a href="https://www.singaporeair.com/en_UK/sg/travel-info/">TRAVEL INFO | </a>
+                    <a href="https://www.singaporeair.com/en_UK/sg/ppsclub-krisflyer/">PPS CLUB / KRISFLYER | </a>
+                    <a href="https://www.singaporeair.com/en_UK/sq-corporate/travel-programme/">FOR BUSINESSES</a>
+
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <!-- <h1>About Us</h1> -->
+    </section>
+
+    <!-- <header>
+        <h1 class="logo">Singapore <span>Airlines</span></h1>
+        <nav>
+            <ul class="navigation">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Flights</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Promotions</a></li>
+                <li><a href="#">Manage Booking</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header> -->
+
+    <section>
+        <div id="content">
+            <h1 id="title">TravelGPT, your one-stop travel bot</h1>
+            <div class="query">Where would you like to go?</div>
+            <div class="box">
+                <input type="text" id="cityInput">
+            </div>
+            <div class="query">Month of travel:</div>
+            <div class="box">
+                <input type="text" id="monthInput">
+            </div>
+            <div class="query">Number of days:</div>
+            <div class="box">
+                <input type="text" id="daysInput">
+            </div>
+            <button onclick="submitForm()">Submit</button>
+        </div>
+    </section>
+
+    <script src="../app.js"></script>
+    <script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu(){
+            navLinks.style.right = "0";
+        }
+        function hideMenu(){
+            navLinks.style.right = "-200px";
+        }
+    
+    </script>
+</body>
+</html>
