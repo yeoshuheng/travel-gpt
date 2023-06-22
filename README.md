@@ -32,9 +32,9 @@ With that, we have decided to leverage on the growing trend of free to use LLMs 
 
 ### Starting Up
 1. Install Docker
-2. Run and wait for docker to build (will take around 5-6 minutes).
+2. Run and wait for docker to build and create the containers.
 ```bash
-docker compose up
+docker compose up --build
 ```
 
 ### Endpoints
