@@ -3,6 +3,7 @@
     padding: 0;
     font-family: 'Finlandica', sans-serif;
 }
+
 .header{
     background-color: #00376E;
     height: 100px;
@@ -65,36 +66,6 @@ header {
     background-color: #00376E;
     color: #fff;
     padding: 20px;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.logo span {
-    color: #FF6600;
-}
-
-.navigation {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.navigation li {
-    margin-right: 20px;
-}
-
-.navigation li:last-child {
-    margin-right: 0;
-}
-
-.navigation li a {
-    color: #fff;
-    text-decoration: none;
 }
 
 #content {
@@ -165,6 +136,36 @@ button:hover {
     background-color: #004F6B;
 }
 
+/* unused code used in a previous iteration
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.logo span {
+    color: #FF6600;
+}
+
+.navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+} 
+
+.navigation li {
+    margin-right: 20px;
+}
+
+.navigation li:last-child {
+    margin-right: 0;
+}
+
+.navigation li a {
+    color: #fff;
+    text-decoration: none;
+} */
 
 
 

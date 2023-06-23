@@ -9,9 +9,14 @@
     <!-- Smart-app-banner -->
     <meta name="apple-itunes-app" content="app-id=515287841">
     <meta name="google-play-app" content="app-id=com.amadeus.merci.client.ui">
-    <script>
+    
+    <!--<script> 
+      // TO NOTE: I commented this part of the code as it does not affect the UI of the webiste at all, however,
+      ill leave it for now
+
+
       // akam-sw.js install script version 1.3.6
-      "serviceWorker" in navigator && "find" in [] && function() {
+      //"serviceWorker" in navigator && "find" in [] && function() {
         var e = new Promise(function(e) {
             "complete" === document.readyState || !1 ? e() : (window.addEventListener("load", function() {
               e()
@@ -79,326 +84,61 @@
             },
             g = navigator.serviceWorker.__proto__.register;
           if (navigator.serviceWorker.__proto__.register = function(n, r) {
-              return n.includes(i) ? g.call(this, n, r) : (aka3pmLog("Overriding registration of service worker for: " + n), s = new URL(n, window.location.href), m = r, navigator.serviceWorker.controller ? new Promise(function(n, r) {
-                var o = navigator.serviceWorker.controller.scriptURL;
-                if (o.includes(i)) {
-                  var a = encodeURIComponent(s);
-                  o.includes(a) ? (aka3pmLog("Cancelling registration as we already integrate other SW: " + s), navigator.serviceWorker.getRegistration().then(function(e) {
-                    n(e)
-                  })) : e.then(function() {
-                    aka3pmLog("Unregistering existing 3pm service worker"), navigator.serviceWorker.getRegistration().then(function(e) {
-                      e.unregister().then(function() {
-                        return d()
-                      }).then(function(e) {
-                        n(e)
-                      }).catch(function(e) {
-                        r(e)
+              if ("/akam-sw.js" === n) {
+                if (r && r.scope) {
+                  var o = r.scope;
+                  r.scope += "?othersw=" + encodeURIComponent(s)
+                }
+                return Promise.all([g.call(navigator.serviceWorker, n, r).catch(function(e) {
+                  if (aka3pmLog("Failed to register /akam-sw.js: ", e), o) {
+                    var n = e.name;
+                    return navigator.serviceWorker.getRegistration(o).then(function(e) {
+                      return e.unregister().then(function() {
+                        return navigator.serviceWorker.register(n, r)
                       })
                     })
-                  })
-                } else aka3pmLog("Cancelling registration as we already have akam-sw.js installed"), navigator.serviceWorker.getRegistration().then(function(e) {
-                  n(e)
+                  }
+                  return Promise.reject(e)
+                })]).then(function(e) {
+                  return Promise.resolve(e[0])
                 })
-              }) : g.call(this, n, r))
-            }, navigator.serviceWorker.controller) {
-            var u = navigator.serviceWorker.controller.scriptURL;
-            u.includes("/akam-sw.js") || u.includes("/akam-sw-preprod.js") || u.includes("/threepm-sw.js") || (aka3pmLog("Detected existing service worker. Removing and re-adding inside akam-sw.js"), s = new URL(u, window.location.href), e.then(function() {
-              navigator.serviceWorker.getRegistration().then(function(e) {
-                m = {
-                  scope: e.scope
-                }, e.unregister(), d()
-              })
+              }
+              return g.call(navigator.serviceWorker, n, r)
+            }, "fetch" in self && (self.__proxiedFetch = self.fetch, self.fetch = function(e, n) {
+              if ("/akam-sw.js" === e) {
+                if (n && n.method) {
+                  var r = n.method;
+                  n.method += "?othersw=" + encodeURIComponent(s)
+                }
+                return self.__proxiedFetch(e, n).catch(function(e) {
+                  if (aka3pmLog("Failed to fetch /akam-sw.js: ", e), r) {
+                    var n = e.name;
+                    return navigator.serviceWorker.getRegistration().then(function(e) {
+                      return e.unregister().then(function() {
+                        return navigator.serviceWorker.register(navigator.serviceWorker.controller.scriptURL, {
+                          updateViaCache: "all"
+                        })
+                      })
+                    }).then(function() {
+                      return self.__proxiedFetch(e, n)
+                    })
+                  }
+                  return Promise.reject(e)
+                })
+              }
+              return self.__proxiedFetch(e, n)
+            }), "performance" in window && window.performance && "timing" in window.performance) {
+            var l = performance.timing;
+            l && (c(l), l.msFirstPaint && t({
+              command: "firstPaint",
+              time: l.msFirstPaint
             }))
           } else e.then(function() {
-            window.akamServiceWorkerPreprod && (i = "/akam-sw-preprod.js"), d()
+            c(performance.timing)
           });
-          if (window.performance) {
-            var w = window.performance.timing,
-              l = w.responseEnd - w.responseStart;
-            c(l)
-          }
-          e.then(function() {
-            t({
-              command: "pageLoad"
-            })
-          });
-          var k = !1;
+          //}
+      </script>-->
 
-          function v() {
-            window.akamServiceWorkerDebug && !k && (k = !0, aka3pmLog("Initializing debug functions at window scope"), window.aka3pmInjectSwPolicy = function(e) {
-              return t({
-                command: "updatePolicy",
-                policy: e
-              })
-            }, window.aka3pmDisableInjectedPolicy = function() {
-              return t({
-                command: "disableInjectedPolicy"
-              })
-            }, window.aka3pmDeleteInjectedPolicy = function() {
-              return t({
-                command: "deleteInjectedPolicy"
-              })
-            }, window.aka3pmGetStateAsync = function() {
-              return t({
-                command: "getState"
-              })
-            }, window.aka3pmDumpState = function() {
-              aka3pmGetStateAsync().then(function(e) {
-                aka3pmLog(JSON.stringify(e, null, "\t"))
-              })
-            }, window.aka3pmInjectTiming = function(e) {
-              return c(e)
-            }, window.aka3pmUpdatePolicyFromNetwork = function() {
-              return t({
-                command: "pullPolicyFromNetwork"
-              })
-            })
-          }
-          v()
-        }
-      }();
-    </script>
-    <script type="text/javascript" src="/ruxitagentjs_ICA2NVfghjqru_10265230425083909.js" data-dtconfig="app=7bacf3aecd29efdf|featureHash=ICA2NVfghjqru|vcv=2|rdnt=1|uxrgce=1|bp=3|cuc=tsa7j1xf|mel=100000|dpvc=1|md=mdcc1=a#main-inner ^rb div.manage-booking-wrapper ^rb div.blk-heading ^rbh3,mdcc2=a#hlogin ^rb div.user-summary-panel-container.container-center ^rb div ^rb div ^rb span ^rb span.currentTier_wrapper ^rb span.currentTier_text,mdcc3=ckfMagic,mdcc4=cJSESSIONID,mdcc5=bdocument.title,mdcc6=abody ^rb div.popup.popup--logged-profile.animated.fadeIn ^rb div ^rb div ^rb div.popup__heading ^rb p|ssv=4|lastModification=1686282337047|dtVersion=10265230425083909|tp=500,50,0,1|agentUri=/ruxitagentjs_ICA2NVfghjqru_10265230425083909.js|reportUrl=/rb_5a9ef1b3-f700-46f4-afd4-718ab3ce10ae|rid=RID_1978697209|rpid=-179307195|domain=singaporeair.com"></script>
-    
-    <link rel="stylesheet" href="/assets/style/home-core-n2311.css" />
-    <link rel="stylesheet" href="/assets/style/fonts-n2311.css" />
-    <!-- Smart-app-banner -->
-    <title>Singapore Airlines Official Website | Book International Flight Tickets</title>
-    <script>
-      var hash = "n2311";
-    </script>
-    <script>
-      vice = {
-        config: {
-          viceAccountId: 'singaporeairlines',
-          viceSiteId: 'singaporeairlines',
-          viceZoneId: '',
-          viceSectionId: ''
-        }
-      }
-    </script>
-    <script type="text/javascript" src=""></script>
-    <link rel="dns-prefetch" href="https://cdn.glassboxcdn.com" />
-    <link rel="dns-prefetch" href="https://n-cdn.areyouahuman.com" />
-    <link rel="dns-prefetch" href="https://c.go-mpulse.net" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="https://cdn.distiltag.com" />
-    <link rel="dns-prefetch" href="https://singaporeairlines.api.useinsider.com" />
-    <link rel="dns-prefetch" href="https://connect.facebook.net" />
-    <link rel="dns-prefetch" href="https://www.facebook.com" />
-    <link rel="dns-prefetch" href="https://tag.yieldoptimizer.com" />
-    <link rel="dns-prefetch" href="https://api.useinsider.com" />
-    <link rel="dns-prefetch" href="https://www.google.com" />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/au/home#/book/bookflight' hreflang='en-au' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/bd/home#/book/bookflight' hreflang='en-bd' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/bn/home#/book/bookflight' hreflang='en-bn' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/kh/home#/book/bookflight' hreflang='en-kh' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/cn/home#/book/bookflight' hreflang='en-cn' />
-    <link rel='alternate' href='https://www.singaporeair.com/zh_CN/cn/home#/book/bookflight' hreflang='zh-cn' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/hk/home#/book/bookflight' hreflang='en-hk' />
-    <link rel='alternate' href='https://www.singaporeair.com/zh_TW/hk/home#/book/bookflight' hreflang='zh-hk' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/in/home#/book/bookflight' hreflang='en-in' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/id/home#/book/bookflight' hreflang='en-id' />
-    <link rel='alternate' href='https://www.singaporeair.com/in_ID/id/home#/book/bookflight' hreflang='id-id' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/jp/home#/book/bookflight' hreflang='en-jp' />
-    <link rel='alternate' href='https://www.singaporeair.com/ja_JP/jp/home#/book/bookflight' hreflang='ja-jp' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/my/home#/book/bookflight' hreflang='en-my' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/mv/home#/book/bookflight' hreflang='en-mv' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/mm/home#/book/bookflight' hreflang='en-mm' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/np/home#/book/bookflight' hreflang='en-np' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/nz/home#/book/bookflight' hreflang='en-nz' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/ph/home#/book/bookflight' hreflang='en-ph' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/sg/home#/book/bookflight' hreflang='en-sg' />
-    <link rel='alternate' href='https://www.singaporeair.com/zh_CN/sg/home#/book/bookflight' hreflang='zh-sg' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/kr/home#/book/bookflight' hreflang='en-kr' />
-    <link rel='alternate' href='https://www.singaporeair.com/ko_KR/kr/home#/book/bookflight' hreflang='ko-kr' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/lk/home#/book/bookflight' hreflang='en-lk' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/tw/home#/book/bookflight' hreflang='en-tw' />
-    <link rel='alternate' href='https://www.singaporeair.com/zh_TW/tw/home#/book/bookflight' hreflang='zh-tw' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/th/home#/book/bookflight' hreflang='en-th' />
-    <link rel='alternate' href='https://www.singaporeair.com/th_TH/th/home#/book/bookflight' hreflang='th-th' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/vn/home#/book/bookflight' hreflang='en-vn' />
-    <link rel='alternate' href='https://www.singaporeair.com/vi_VN/vn/home#/book/bookflight' hreflang='vi-vn' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/sa/home#/book/bookflight' hreflang='en-sa' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/ae/home#/book/bookflight' hreflang='en-ae' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/za/home#/book/bookflight' hreflang='en-za' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/br/home#/book/bookflight' hreflang='en-br' />
-    <link rel='alternate' href='https://www.singaporeair.com/pt_BR/br/home#/book/bookflight' hreflang='pt-br' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/ca/home#/book/bookflight' hreflang='en-ca' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/us/home#/book/bookflight' hreflang='en-us' />
-    <link rel='alternate' href='https://www.singaporeair.com/de_DE/at/home#/book/bookflight' hreflang='de-at' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/at/home#/book/bookflight' hreflang='en-at' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/be/home#/book/bookflight' hreflang='en-be' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/hr/home#/book/bookflight' hreflang='en-hr' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/dk/home#/book/bookflight' hreflang='en-dk' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/fr/home#/book/bookflight' hreflang='en-fr' />
-    <link rel='alternate' href='https://www.singaporeair.com/fr_FR/fr/home#/book/bookflight' hreflang='fr-fr' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/de/home#/book/bookflight' hreflang='en-de' />
-    <link rel='alternate' href='https://www.singaporeair.com/de_DE/de/home#/book/bookflight' hreflang='de-de' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/gr/home#/book/bookflight' hreflang='en-gr' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/ie/home#/book/bookflight' hreflang='en-ie' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/it/home#/book/bookflight' hreflang='en-it' />
-    <link rel='alternate' href='https://www.singaporeair.com/it_IT/it/home#/book/bookflight' hreflang='it-it' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/nl/home#/book/bookflight' hreflang='en-nl' />
-    <link rel='alternate' href='https://www.singaporeair.com/nl_NL/nl/home#/book/bookflight' hreflang='nl-nl' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/no/home#/book/bookflight' hreflang='en-no' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/pl/home#/book/bookflight' hreflang='en-pl' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/pt/home#/book/bookflight' hreflang='en-pt' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/ru/home#/book/bookflight' hreflang='en-ru' />
-    <link rel='alternate' href='https://www.singaporeair.com/ru_RU/ru/home#/book/bookflight' hreflang='ru-ru' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/es/home#/book/bookflight' hreflang='en-es' />
-    <link rel='alternate' href='https://www.singaporeair.com/es_ES/es/home#/book/bookflight' hreflang='es-es' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/se/home#/book/bookflight' hreflang='en-se' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/ch/home#/book/bookflight' hreflang='en-ch' />
-    <link rel='alternate' href='https://www.singaporeair.com/fr_FR/ch/home#/book/bookflight' hreflang='fr-ch' />
-    <link rel='alternate' href='https://www.singaporeair.com/de_DE/ch/home#/book/bookflight' hreflang='de-ch' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/tr/home#/book/bookflight' hreflang='en-tr' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/gb/home#/book/bookflight' hreflang='en-gb' />
-    <link rel='alternate' href='https://www.singaporeair.com/en_UK/sg/home#/book/bookflight' hreflang='x-default' />
-    <link rel='canonical' href='https://www.singaporeair.com/en_UK/sg/home#/book/bookflight' />
-    <link rel="preconnect" href="https://cdn.glassboxcdn.com" />
-    <link rel="preconnect" href="https://n-cdn.areyouahuman.com" />
-    <link rel="preconnect" href="https://c.go-mpulse.net" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://cdn.distiltag.com" />
-    <link rel="preconnect" href="https://singaporeairlines.api.useinsider.com" />
-    <link rel="preconnect" href="https://connect.facebook.net" />
-    <link rel="preconnect" href="https://www.facebook.com" />
-    <link rel="preconnect" href="https://tag.yieldoptimizer.com" />
-    <link rel="preconnect" href="https://api.useinsider.com" />
-    <link rel="preconnect" href="https://www.google.com" />
-    <link rel="preload" href="/assets/fonts/proximanova-regular-webfont.woff" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="/assets/fonts/sigvar_serial-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/assets/fonts/proximanova-semibold-webfont.woff" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="/assets/fonts/proximanova-bold-webfont.woff" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="/assets/fonts/proximanova-light-webfont.woff" as="font" type="font/woff" crossorigin>
-    <script>
-      var nuDataEnabled = "";
-    </script>
-    <script>
-      (window.BOOMR_mq = window.BOOMR_mq || []).push(["addVar", {
-        "rua.upush": "true",
-        "rua.cpush": "false",
-        "rua.upre": "true",
-        "rua.cpre": "false",
-        "rua.uprl": "false",
-        "rua.cprl": "false",
-        "rua.cprf": "false",
-        "rua.trans": "SJ-1e2cc141-ad64-44b3-acfb-ac5b73782e0e",
-        "rua.cook": "true",
-        "rua.ims": "false",
-        "rua.ufprl": "true",
-        "rua.cfprl": "true",
-        "rua.isuxp": "false",
-        "rua.texp": "norulematch"
-      }]);
-    </script>
-    <script>
-      ! function(a) {
-        var e = "https://s.go-mpulse.net/boomerang/",
-          t = "addEventListener";
-        if ("False" == "True") a.BOOMR_config = a.BOOMR_config || {}, a.BOOMR_config.PageParams = a.BOOMR_config.PageParams || {}, a.BOOMR_config.PageParams.pci = !0, e = "https://s2.go-mpulse.net/boomerang/";
-        if (window.BOOMR_API_key = "URWKD-92TAT-8TXKV-MQBNA-5JJXP", function() {
-            function n(e) {
-              a.BOOMR_onload = e && e.timeStamp || (new Date).getTime()
-            }
-            if (!a.BOOMR || !a.BOOMR.version && !a.BOOMR.snippetExecuted) {
-              a.BOOMR = a.BOOMR || {}, a.BOOMR.snippetExecuted = !0;
-              var i, _, o, r = document.createElement("iframe");
-              if (a[t]) a[t]("load", n, !1);
-              else if (a.attachEvent) a.attachEvent("onload", n);
-              r.src = "javascript:void(0)", r.title = "", r.role = "presentation", (r.frameElement || r).style.cssText = "width:0;height:0;border:0;display:none;", o = document.getElementsByTagName("script")[0], o.parentNode.insertBefore(r, o);
-              try {
-                _ = r.contentWindow.document
-              } catch (O) {
-                i = document.domain, r.src = "javascript:var d=document.open();d.domain='" + i + "';void(0);", _ = r.contentWindow.document
-              }
-              _.open()._l = function() {
-                  var a = this.createElement("script");
-                  if (i) this.domain = i;
-                  a.id = "boomr-if-as", a.src = e + "URWKD-92TAT-8TXKV-MQBNA-5JJXP", BOOMR_lstart = (new Date).getTime(), this.body.appendChild(a)
-                }, _.write(" < bo "+'dy onload="
-                  document._l();
-                  ">'),_.close()}}(),"
-                  ".length>0)if(a&&"
-                  performance "in a&&a.performance&&"
-                  function "==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e="
-                  true "=="
-                  true "?1:0,t="
-                  cookiepresent ",n="
-                  32 sawalim6ji2zevajsq - f - 0177 fbd4c - clientnsv4 - s.akamaihd.net ",i="
-                  false "=="
-                  true "?2:1,_={"
-                  ak.v ":"
-                  36 ","
-                  ak.cp ":"
-                  15726 ","
-                  ak.ai ":parseInt("
-                  171617 ",10),"
-                  ak.ol ":"
-                  0 ","
-                  ak.cr ":9,"
-                  ak.ipv ":4,"
-                  ak.proto ":"
-                  h2 ","
-                  ak.rid ":"
-                  3 d7d2ff ","
-                  ak.r ":23331,"
-                  ak.a2 ":e,"
-                  ak.m ":"
-                  x ","
-                  ak.n ":"
-                  essl ","
-                  ak.bpcip ":"
-                  222.164 .11 .0 ","
-                  ak.cport ":50685,"
-                  ak.gh ":"
-                  23.50 .232 .117 ","
-                  ak.quicv ":"
-                  ","
-                  ak.tlsv ":"
-                  tls1 .3 ","
-                  ak .0 rtt ":"
-                  ","
-                  ak.csrc ":" - ","
-                  ak.acc ":"
-                  ","
-                  ak.t ":"
-                  1687487077 ","
-                  ak.ak ":"
-                  hOBiQwZUYzCg5VSAfCLimQ == 6 LyLRgIzcHt4u921pmurcTSmsTIaWnFbblyoY449VZ23RWrZ4 / XcB2cc5U5h3lHBkYwstsqgyA584QmxRZGyF0ezGO3HQCpg / AteCNawxsn / dV0NNCmzXX6W6bPP4hHomENp / +Yvc9zmltCrADjpWgH1bKqFMrN + CBhJ8WCOo1eKKOYc5bTPsI / QoBubwoZKUxIEUq2UeEpnecHguATKxqEJVHlYp5XPLuRvXhPg12XK + vO4a9++K + RLhnfh2QjTf0hfMDEcwW7mJIDo4IDfy9Lp1eigaL + A5E5BT1qbKrNp3RAUlUgc8PvTsLZ6SNWwQvtS7Dzz9bUkEd1lFc1EzZ + 0 + G / SK8bbT / 7 Jp27Tqspwq + Fs1XzlKNnWqycU8Xf3NK / OJ88kKjLKNz0QnlWf7CmkAMfmmO87E1T1GGkB / Dk = ","
-                  ak.pv ":"
-                  363 ","
-                  ak.dpoabenc ":"
-                  ","
-                  ak.tf ":i};if("
-                  "!==t)_["
-                  ak.ruds "]=t;var o={i:!1,av:function(e){var t="
-                  http.initiator ";if(e&&(!e[t]||"
-                  spa_hard "===e[t]))_["
-                  ak.feo "]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(_)},rv:function(){var a=["
-                  ak.bpcip ","
-                  ak.cport ","
-                  ak.cr ","
-                  ak.csrc ","
-                  ak.gh ","
-                  ak.ipv ","
-                  ak.m ","
-                  ak.n ","
-                  ak.ol ","
-                  ak.proto ","
-                  ak.quicv ","
-                  ak.tlsv ","
-                  ak .0 rtt ","
-                  ak.r ","
-                  ak.acc ","
-                  ak.t ","
-                  ak.tf "];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:_,akDNSPreFetchDomain:n,init:function(){if(!o.i){var a=BOOMR.subscribe;a("
-                  before_beacon ",o.av,null,null),a("
-                  onbeacon ",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);
-    </script>
   </head>
   <body>
     <!--Home_Page-->
