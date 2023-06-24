@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from chat.chatbot import chatBot
 from database.db import DB
 from database.cache import *
 from database.handlers import *
 
 app = Flask(__name__)
+CORS(app)
 db = DB()
 CHATBOT = chatBot()
 
