@@ -31,7 +31,19 @@ class TemplateGenerator:
             template = "What is the weather like at {location}, format it nicely."
         ), "weather")
 
-        return [locprompt, cuisineinfo, accomsinfo, transportinfo, weatherinfo]
+        ecoinfo = (PromptTemplate(
+            input_variables = ["location"],
+            template = "I am a tourist, give me 2 good ways to travel to {location} in a eco-friendly and sustainable manner."
+        ), "ecoinfo")
+
+        budgetinfo = (PromptTemplate(
+            input_variables = ["location"],
+            template = "I am a tourist, give me 2 good ways to save money when travelling to {location}."
+        ), "budget")
+
+        return [locprompt, cuisineinfo, accomsinfo, 
+                transportinfo, weatherinfo, 
+                ecoinfo, budgetinfo]
     
     def getCheckTemplates(self) -> PromptTemplate:
         validLoc = PromptTemplate(

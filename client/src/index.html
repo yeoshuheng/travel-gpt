@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Singapore Airlines - TravelGPT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../styles/index.css">
@@ -38,7 +39,7 @@
             </div>
             <div class="query">Month of travel:</div>
             <div class="box">
-                <input type="text" id="monthInput">
+                <input type="text" id="monthsInput">
             </div>
             <div class="query">Number of days:</div>
             <div class="box">
@@ -50,26 +51,17 @@
         <div id="output">
             <div class="query">TravelGPT suggestion:</div>
             <div class="box">
-                <input type="text" id="userInput" readonly>
-                <!-- 
-                    Use the code below to have 1 output box once the data can be parsed properly, and change the id correspondingly:
-
-                    <input type="outputBox" id="userInput" readonly>
-
-                    -->
-                <!-- Delete jsonObject and result if able to display the others -->
-                <input type="text" id="jsonObject" readonly>
-                <input type="text" id="result" readonly>
-                <input type="text" id="accoms" readonly>
-                <input type="text" id="cuisine" readonly>
                 <input type="text" id="desc" readonly>
-                <input type="text" id="iternary" readonly>
+                <input type="text" id="cuisine" readonly>
+                <input type="text" id="accoms" readonly>
+                <input type="text" id="budget" readonly>
+                <input type="text" id="eco" readonly>
                 <input type="text" id="transportation" readonly>
                 <input type="text" id="weather" readonly>
+                <input type="text" id="iternary" readonly>
             </div>
         </div>        
     </section>    
     <script src="../app.js"></script>
-    <script src="../scripts/custom.js"></script>
 </body>
 </html>
