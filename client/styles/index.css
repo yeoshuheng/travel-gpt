@@ -2,63 +2,62 @@
     margin: 0;
     padding: 0;
     font-family: 'Finlandica', sans-serif;
-}
-
-.header {
+  }
+  
+  .header {
     background: linear-gradient(to right, #00376E, #0F56A6);
     height: 80px;
-}
-
-
-.header-buttons {
+  }
+  
+  .header-buttons {
     position: absolute;
     right: 200px;
     display: flex;
     align-items: center;
-}
-
-nav img {
+  }
+  
+  nav img {
     width: 120px;
     height: auto;
     margin-top: -10px;
     margin-right: 10px;
-}
-
-.small-logo {
+  }
+  
+  .small-logo {
     width: 80px;
-}
-
-.logopic {
+  }
+  
+  .logopic {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-}
-
-.logopic img {
+  }
+  
+  .logopic img {
     width: 120px;
     margin-top: -10px;
     margin-right: 10px;
-}
-
-.nav-links ul {
+  }
+  
+  .nav-links ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
     list-style: none;
-    margin-left: 200px; /* Adjust the value as needed */
-}
-
-.nav-links ul li {
+    margin-left: 200px;
+  }
+  
+  .nav-links ul li {
     margin-right: 50px;
-}
-
-.nav-links ul a {
+  }
+  
+  .nav-links ul a {
     color: #fff;
     text-decoration: none;
     font-size: 14px;
-}
-
-.nav-links ul li::after {
+  }
+  
+  .nav-links ul li::after {
     content: '';
     width: 0%;
     height: 2px;
@@ -66,46 +65,46 @@ nav img {
     display: block;
     margin: auto;
     transition: 0.35s;
-}
-
-.nav-links ul li:hover::after {
+  }
+  
+  .nav-links ul li:hover::after {
     width: 100%;
-}
-
-.section {
+  }
+  
+  .section {
     min-height: 100vh;
-}
-
-nav {
+  }
+  
+  nav {
     display: flex;
     padding: 2% 2%;
     justify-content: space-between;
     align-items: center;
-}
-
-body {
+  }
+  
+  body {
     margin: 0;
     padding: 0;
     background-color: #F5F5F5;
     height: 100vh;
     overflow: hidden;
-}
-
-#backgroundImage {
+  }
+  
+  #backgroundImage {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 134px;
-}
-
-header {
+  }
+  
+  header {
     background-color: #00376E;
     color: #fff;
     padding: 20px;
-}
-
-#content {
+  }
+  
+  #content {
     position: absolute;
     top: 50%;
     left: 15%;
@@ -121,9 +120,14 @@ header {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+  }
 
-#title {
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  #title {
     text-align: center;
     font-size: 36px;
     font-weight: 600;
@@ -132,21 +136,20 @@ header {
     margin-bottom: 20px;
   }
   
-
-.query {
+  .query {
     font-weight: bold;
     margin-bottom: 10px;
-}
-
-.box {
+  }
+  
+  .box {
     width: 100%;
     background-color: #F1F1F1;
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-input[type="text"] {
+  }
+  
+  input[type="text"] {
     display: block;
     width: 100%;
     height: 30px;
@@ -156,33 +159,33 @@ input[type="text"] {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-
-button {
+  }
+  
+  button {
     display: block;
     width: 100%;
     height: 30px;
     padding: 4px;
     font-size: 14px;
-    background-color: #0066b3; 
+    background-color: #0066b3;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-button:hover {
-    background-color: #004d99; 
-}
-
-#output {
+  }
+  
+  button:hover {
+    background-color: #004d99;
+  }
+  
+  #output {
     position: absolute;
-    top: 31%;
-    right: 55%;
+    top: 55%;
+    right: 45%;
     transform: translate(50%, -50%);
-    width: 400px;
-    height: auto;
+    width: 600px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -192,40 +195,10 @@ button:hover {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+  }
+  
 
 
-
-/* unused code used in a previous iteration
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.logo span {
-    color: #FF6600;
-}
-
-.navigation {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-} 
-
-.navigation li {
-    margin-right: 20px;
-}
-
-.navigation li:last-child {
-    margin-right: 0;
-}
-
-.navigation li a {
-    color: #fff;
-    text-decoration: none;
-} */
 
 
 
