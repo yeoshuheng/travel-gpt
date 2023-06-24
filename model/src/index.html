@@ -11,37 +11,23 @@
 <body>
     <section class="header">
         <nav>
-            <a class="logopic" href="https://www.singaporeair.com/en_UK/sg/home#/book/bookflight"><img src="../images/newlogo.png"></a>
+            <a class="logopic" href="https://www.singaporeair.com/en_UK/sg/home#/book/bookflight"><img src="../images/newlogo.png" class="small-logo"></a>
             <div class="nav-links" id="navLinks">
                 <i class="fa fa-close" onclick="hideMenu()"></i>
                 <ul>
-                    <a href="https://www.singaporeair.com/en_UK/sg/plan-travel/">PLAN TRAVEL | </a>
-                    <a href="https://www.singaporeair.com/en_UK/sg/flying-withus/">FLYING WITH US | </a>
-                    <a href="https://www.singaporeair.com/en_UK/sg/travel-info/">TRAVEL INFO | </a>
-                    <a href="https://www.singaporeair.com/en_UK/sg/ppsclub-krisflyer/">PPS CLUB / KRISFLYER | </a>
-                    <a href="https://www.singaporeair.com/en_UK/sq-corporate/travel-programme/">FOR BUSINESSES</a>
-
+                    <li><a href="https://www.singaporeair.com/en_UK/sg/plan-travel/">PLAN TRAVEL</a></li>
+                    <li><a href="https://www.singaporeair.com/en_UK/sg/flying-withus/">FLYING WITH US</a></li>
+                    <li><a href="https://www.singaporeair.com/en_UK/sg/travel-info/">TRAVEL INFO</a></li>
+                    <li><a href="https://www.singaporeair.com/en_UK/sg/ppsclub-krisflyer/">PPS CLUB / KRISFLYER</a></li>
+                    <li><a href="https://www.singaporeair.com/en_UK/sq-corporate/travel-programme/">FOR BUSINESSES</a></li>
+                    <a href="" class="search">SEARCH |</a>
+                    <a href="/en_UK/ppsclub-krisflyer/registration-form/" class="login">LOGIN |</a>
+                    <a href="/en_UK/ppsclub-krisflyer/registration-form/" class="signup">SIGN UP</a>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
-        
     </section>
-
-<!-- <h1>About Us</h1> -->
-    <!-- <header>
-        <h1 class="logo">Singapore <span>Airlines</span></h1>
-        <nav>
-            <ul class="navigation">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Flights</a></li>
-                <li><a href="#">Destinations</a></li>   
-                <li><a href="#">Promotions</a></li>
-                <li><a href="#">Manage Booking</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header> -->
 
     <section>
         <div id="content">
@@ -60,18 +46,32 @@
             </div>
             <button onclick="submitForm()">Submit</button>
         </div>
-    </section>
 
+        <!-- Display input values -->
+        <div id="output">
+            <div class="query">Your input:</div>
+            <div class="box">
+                <input type="text" id="userInput" readonly>
+            </div>
+        </div>
+    </section>    
     <script src="../app.js"></script>
-    <script>
-        var navLinks = document.getElementById("navLinks");
-        function showMenu(){
-            navLinks.style.right = "0";
-        }
-        function hideMenu(){
-            navLinks.style.right = "-200px";
-        }
-    
-    </script>
+    <script src="../scripts/custom.js"></script>
 </body>
 </html>
+
+
+
+<!-- <h1>About Us</h1> -->
+    <!-- <header>
+        <h1 class="logo">Singapore <span>Airlines</span></h1>
+        <nav>
+            <ul class="navigation">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Flights</a></li>
+                <li><a href="#">Promotions</a></li>
+                <li><a href="#">Manage Booking</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header> -->
