@@ -44,7 +44,7 @@ With that, we have decided to leverage on the growing trend of free to use LLMs 
     \
     Afterwards, cd into the project directory and run:
     ```bash
-    launch.sh
+    bash launch.sh
     ```
     The application should open, wait for a minute for the docker build to complete and you can now enjoy the app.\
     \
