@@ -26,14 +26,16 @@ function submitForm() {
     success: function (result) {
       console.log("POST request successful!");
       const obj = result;
-      document.getElementById("accoms").value = obj.accoms;
-      document.getElementById("cuisine").value = obj.cuisine;
-      document.getElementById("desc").value = obj.desc;
-      document.getElementById("iternary").value = obj.iternary;
-      document.getElementById("transportation").value = obj.transportation;
-      document.getElementById("weather").value = obj.weather;
-      document.getElementById("eco").value = obj.ecoinfo;
-      document.getElementById("budget").value = obj.budget;
+      var output = "";
+      output += "Accommodations: " + obj.accoms + ", ";
+      output += "Cuisine: " + obj.cuisine + ", ";
+      output += "Description: " + obj.desc + ", ";
+      output += "Itinerary: " + obj.iternary + ", ";
+      output += "Transportation: " + obj.transportation + ", ";
+      output += "Weather: " + obj.weather + ", ";
+      output += "Eco-friendliness: " + obj.ecoinfo + ", ";
+      output += "Budget: " + obj.budget;
+      document.getElementById("outputText").value = output;
     },
     error: function (result, status) {
       console.log("POST request failed!");
