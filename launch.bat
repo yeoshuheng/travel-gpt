@@ -1,3 +1,2 @@
-set mypath=%cd%
-start chrome ./client/src/index.html
+start chrome %cd%/client/src/index.html
 docker compose up --build
