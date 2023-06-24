@@ -1,9 +1,14 @@
 import os
-from chat.apikey import apikey
+import json
 from langchain.llms import openai
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SimpleSequentialChain
 from chat.templategen import TemplateGenerator
+
+with open("./config/config.json", "r") as f:
+    key = json.load(f)
+apikey = key["api-key"]
+
 
 os.environ["OPENAI_API_KEY"] = apikey
 
