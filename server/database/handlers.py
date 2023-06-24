@@ -1,10 +1,11 @@
 from chat.chatbot import chatBot
+import sys
 
 def handleDetails(inpt : str, bot : chatBot) -> dict:
     resp = {}
     for chain in bot.generateChains():
             c, title = chain
-            c = c.run(location = inpt)
+            c = c.run(inpt)
             resp[title] = c
     return resp
 

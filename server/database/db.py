@@ -3,7 +3,7 @@ import pickle
 
 class DB:
     def __init__(self):
-        pool = redis.ConnectionPool(host = 'localhost', port = 6379, db = 0)
+        pool = redis.ConnectionPool(host = 'redis', port = 6379)
         self.db = redis.Redis(connection_pool = pool)
     
     def write(self, k : str, v : dict) -> None:

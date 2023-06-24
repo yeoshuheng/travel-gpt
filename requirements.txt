@@ -1,0 +1,8 @@
+numpy==1.25.0
+setuptools
+langchain==0.0.208
+openai==0.27.8
+openapi-schema-pydantic==1.2.4
+pickleshare==0.7.5
+redis==4.5.5
+flask==2.2.5
