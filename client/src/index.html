@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Singapore Airlines - TravelGPT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../styles/index.css">
@@ -38,7 +39,7 @@
             </div>
             <div class="query">Month of travel:</div>
             <div class="box">
-                <input type="text" id="monthInput">
+                <input type="text" id="monthsInput">
             </div>
             <div class="query">Number of days:</div>
             <div class="box">
@@ -58,8 +59,6 @@
 
                     -->
                 <!-- Delete jsonObject and result if able to display the others -->
-                <input type="text" id="jsonObject" readonly>
-                <input type="text" id="result" readonly>
                 <input type="text" id="accoms" readonly>
                 <input type="text" id="cuisine" readonly>
                 <input type="text" id="desc" readonly>
