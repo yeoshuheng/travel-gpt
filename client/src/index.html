@@ -47,11 +47,25 @@
             <button onclick="submitForm()">Submit</button>
             <div class="error-message" id="errorMessage"></div>
         </div>
-
         <div id="output">
-            <div class="query">Your input:</div>
+            <div class="query">TravelGPT suggestion:</div>
             <div class="box">
                 <input type="text" id="userInput" readonly>
+                <!-- 
+                    Use the code below to have 1 output box once the data can be parsed properly, and change the id correspondingly:
+
+                    <input type="outputBox" id="userInput" readonly>
+
+                    -->
+                <!-- Delete jsonObject and result if able to display the others -->
+                <input type="text" id="jsonObject" readonly>
+                <input type="text" id="result" readonly>
+                <input type="text" id="accoms" readonly>
+                <input type="text" id="cuisine" readonly>
+                <input type="text" id="desc" readonly>
+                <input type="text" id="iternary" readonly>
+                <input type="text" id="transportation" readonly>
+                <input type="text" id="weather" readonly>
             </div>
         </div>        
     </section>    
@@ -59,20 +73,3 @@
     <script src="../scripts/custom.js"></script>
 </body>
 </html>
-
-
-
-
-<!-- <h1>About Us</h1> -->
-    <!-- <header>
-        <h1 class="logo">Singapore <span>Airlines</span></h1>
-        <nav>
-            <ul class="navigation">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Flights</a></li>
-                <li><a href="#">Promotions</a></li>
-                <li><a href="#">Manage Booking</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header> -->
