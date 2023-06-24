@@ -32,6 +32,8 @@ function submitForm() {
       document.getElementById("iternary").value = obj.iternary;
       document.getElementById("transportation").value = obj.transportation;
       document.getElementById("weather").value = obj.weather;
+      document.getElementById("eco").value = obj.ecoinfo;
+      document.getElementById("budget").value = obj.budget;
     },
     error: function (result, status) {
       console.log("POST request failed!");
