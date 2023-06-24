@@ -19,25 +19,24 @@ function submitForm() {
   document.getElementById("daysInput").value = "";
   
   $.ajax({
-     type: "POST",
-     url: "http://localhost:5000/post_json",
-     data: jsonObject,
-     contentType: "application/json",
-     success: function (result) {
-       const obj = result;
-       document.getElementById("desc").value = obj.desc;
-       document.getElementById("accoms").value = obj.accoms;
-       document.getElementById("cuisine").value = obj.cuisine;
-       document.getElementById("iternary").value = obj.iternary;
-       document.getElementById("transportation").value = obj.transportation;
-       document.getElementById("weather").value = obj.weather;
-       document.getElementById("eco").value = obj.ecoinfo;
-       document.getElementById("budget").value = obj.budget;
-     },
-     error: function (result, status) {
-       console.log("POST request failed!");
-       console.log(result);
-     }
-   });
+    type: "POST",
+    url: "http://localhost:5000/post_json",
+    data: jsonObject,
+    contentType: "application/json",
+    success: function (result) {
+      console.log("POST request successful!");
+      const obj = result;
+      document.getElementById("accoms").value = obj.accoms;
+      document.getElementById("cuisine").value = obj.cuisine;
+      document.getElementById("desc").value = obj.desc;
+      document.getElementById("iternary").value = obj.iternary;
+      document.getElementById("transportation").value = obj.transportation;
+      document.getElementById("weather").value = obj.weather;
+    },
+    error: function (result, status) {
+      console.log("POST request failed!");
+      console.log(result);
+    }
+  });
 }
 
