@@ -46,7 +46,7 @@ With that, we have decided to leverage on the growing trend of free to use LLMs 
 ```bash
 git clone https://github.com/yeoshuheng/travel-gpt.git
 ```
-2. Create OpenAI account and visit the [OpenAI API page](https://platform.openai.com/overview).
+2. Create OpenAI account by visiting the [OpenAI API page](https://platform.openai.com/overview).
 3. Create a API key *Settings>User>API Key* and copy it.
 4. Go into the *travel-gpt/config/config.json* and add your API Key.
 5. Install Docker
