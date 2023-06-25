@@ -28,10 +28,17 @@ With that, we have decided to leverage on the growing trend of free to use LLMs 
 ├── client
 │   ├── images
 │   ├── src
-│   └── styles
+│   ├── styles
+│   └── app.js
+├── config
+│   └── config.json # Put OpenAI API key here
+├── launch
+│   ├── launch.bat # For Windows
+│   └── launch.sh # For Unix
 └── server
     ├── database
-    └── chat
+    ├── chat
+    └── main.py
 ```
 
 ### Getting Started
