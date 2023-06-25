@@ -35,12 +35,16 @@ With that, we have decided to leverage on the growing trend of free to use LLMs 
 ```
 
 ### Getting Started
-1. Create OpenAI account and visit the [OpenAI API page](https://platform.openai.com/overview).
-2. Create a API key *Settings>User>API Key* and copy it.
-3. Go into the *travel-gpt/config/config.json* and add your API Key.
-4. Install Docker
-5. Run Docker
-6. Run application\
+1. Clone this repository
+```bash
+git clone https://github.com/yeoshuheng/travel-gpt.git
+```
+2. Create OpenAI account and visit the [OpenAI API page](https://platform.openai.com/overview).
+3. Create a API key *Settings>User>API Key* and copy it.
+4. Go into the *travel-gpt/config/config.json* and add your API Key.
+5. Install Docker
+6. Run Docker
+7. Run application\
 \
 **MacOS**\
     For MacOS, you will need to first give Google Chrome Full Disk Access, you can do so by going into *System Preferences > Privacy & Security > Full Disk Access* and adding Google Chrome.\
