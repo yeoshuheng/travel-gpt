@@ -21,9 +21,9 @@
                     <li><a href="https://www.singaporeair.com/en_UK/sg/travel-info/">TRAVEL INFO</a></li>
                     <li><a href="https://www.singaporeair.com/en_UK/sg/ppsclub-krisflyer/">PPS CLUB / KRISFLYER</a></li>
                     <li><a href="https://www.singaporeair.com/en_UK/sq-corporate/travel-programme/">FOR BUSINESSES</a></li>
-                    <a href="" class="search">SEARCH | </a>
-                    <a href="https://www.singaporeair.com/en_UK/ppsclub-krisflyer/registration-form/" class="login">LOGIN | </a>
-                    <a href="https://www.singaporeair.com/en_UK/ppsclub-krisflyer/registration-form/" class="signup">SIGN UP</a>
+                    <a href="https://www.singaporeair.com/en_UK/plan-and-book/your-booking/searchFlight/#/book/bookflight" class="search">SEARCH FLIGHTS | </a>
+                    <a href="https://www.singaporeair.com/en_UK/ppsclub-krisflyer/registration-form/" class="login"> LOGIN | </a>
+                    <a href="https://www.singaporeair.com/en_UK/ppsclub-krisflyer/registration-form/" class="signup"> SIGN UP</a>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
@@ -47,15 +47,21 @@
             </div>
             <button onclick="submitForm()">Submit</button>
             <div class="error-message" id="errorMessage"></div>
+            <div class="generate" id="generating"></div>
         </div>
         <div id="output">
             <div class="query">TravelGPT suggestion:</div>
             <div class="box">
                 <output type="outputBox" id="outputText" readonly>
-                
             </div>              
         </div>             
-    </section>    
+    </section> 
+    
+    <section>
+        <div>
+            <img src="../images/planepic2.jpg   " alt="Singapore Airlines Plane" width = "100%"" height=auto>
+        </div>
+    </section>
     <script src="../app.js"></script>
 </body>
 </html>
