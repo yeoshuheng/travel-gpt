@@ -45,14 +45,14 @@ With that, we have decided to leverage on the growing trend of free to use LLMs 
 **MacOS**\
     For MacOS, you will need to first give Google Chrome Full Disk Access, you can do so by going into *System Preferences > Privacy & Security > Full Disk Access* and adding Google Chrome.\
     \
-    Afterwards, cd into the project directory and run:
+    Afterwards, cd into the project directory's launch file and run:
     ```bash
     bash launch.sh
     ```
     The application should open, wait for a minute for the docker build to complete and you can now enjoy the app.\
     \
 **Windows**\
-    For Windows, cd into the project directory and run:
+    For Windows, cd into the project directory's launch file and run:
     ```powershell
     start launch.bat
     ```
