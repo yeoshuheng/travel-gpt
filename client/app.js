@@ -32,9 +32,9 @@ function submitForm() {
       console.log("POST request successful!");
       const obj = result;
       var output = "";
+      output += "Description: " + "<br>" + obj.desc  + "<br><br>";
       output += "Accommodations: " + "<br>" + obj.accoms  + "<br><br>";
       output += "Cuisine: " + "<br>" + obj.cuisine  + "<br><br>";
-      output += "Description: " + "<br>" + obj.desc  + "<br><br>";
       output += "Itinerary: " + "<br>" + obj.iternary  + "<br><br>";
       output += "Transportation: " + "<br>" + obj.transportation  + "<br><br>";
       output += "Weather: " + "<br>" + obj.weather  + "<br><br>";
