@@ -18,7 +18,7 @@ As tourists, it is also very cumbersome to gather information across various sou
 With that, we have decided to leverage on the growing trend of free to use LLMs such as chatGPT to help tourists generate recommendations and gather related information.
 
 ### Demo
-[![Watch the video](https://www.youtube.com/watch?v=xI73cSyNT_U/default.jpg)](https://www.youtube.com/watch?v=xI73cSyNT_U)
+[![Watch the video](https://img.youtube.com/vi/xI73cSyNT_U/maxresdefault.jpg)](https://www.youtube.com/watch?v=xI73cSyNT_U)
 
 ### Tools
  - Frontend: JavaScript, HTML, CSS
