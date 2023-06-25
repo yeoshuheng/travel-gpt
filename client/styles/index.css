@@ -90,13 +90,13 @@
     overflow: hidden;
   }
   
-  #backgroundImage {
+  /* #backgroundImage {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 134px;
-  }
+  } */
   
   header {
     background-color: #00376E;
@@ -105,11 +105,7 @@
   }
   
   #content {
-    position: absolute;
-    top: 43%;
-    left: 15%;
-    transform: translate(-50%, -50%);
-    width: 400px;
+    width: 100%;
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -168,15 +164,24 @@
     overflow: auto;
   }
 
+  .container-fluid {
+    height: 100%;
+    width: 100%;
+    background-image: url(../images/planepic2.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+
   output[type="outputBox"] {
     display: inline-block;
-    width: 950px;
+    width: 945px;
     height: 300px;
     padding: 4px;
     font-size: 14px;
     margin-bottom: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
+    background-color: #f1f1f1;
     border-radius: 4px;
     position: relative;
     word-wrap: break-word;
@@ -213,20 +218,23 @@
     background-color: #004d99;
   }
 
-  #output {
-    position: absolute;
-    top: 12%;
-    right: 5%;
-    height: 400px;
-    width: 1000px;
+   #output {
+    height: 370px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     align-items: flex-start; 
-    padding: 20px;
+    padding: 15px;
     box-sizing: border-box;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
+  } 
+
+  .row{
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+}
+
